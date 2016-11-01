@@ -1,0 +1,14 @@
+{
+  "name": "polling-app",
+  "version": "1.0.0",
+  "description": "Test Node js polling app ",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "",
+  "license": "ISC"
+}
