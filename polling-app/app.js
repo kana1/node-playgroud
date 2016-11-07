@@ -14,3 +14,6 @@ http.listen(3000, function(){
   console.log('listening on port 3000');
 });
 console.log('Pollng app started');
+
+// export app so we can test it
+exports = module.exports = app;
