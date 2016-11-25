@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+// require model file.
+var pollModel = require('../models/polls');
 
 router.route('/')
   .get(function(req,res) {
