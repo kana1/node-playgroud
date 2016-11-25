@@ -15,6 +15,7 @@
     "async": "^2.1.2",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "mongoose": "^4.7.0",
     "rethinkdb": "^2.3.3",
     "socket.io": "^1.5.1"
   },
@@ -22,5 +23,8 @@
     "mocha": "^3.1.2",
     "should": "^11.1.1",
     "supertest": "^2.0.1"
+  },
+  "scripts": {
+    "test": "make test"
   }
 }
