@@ -1,5 +1,6 @@
 var mongoose    =   require("mongoose");
-mongoose.connect('mongodb://localhost:27017/pollsDb');
+var config = require('../config/config');
+mongoose.connect(config.db);
 /*
    * MongoDB port is 27017 by default.
    * Assuming you have created mongoDB database named "pollsDb".

@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var http = require('http').Server(app);
-
+var config = require('./config/config');
 /**
   Adding the controllers.
 */
@@ -10,7 +10,7 @@ var http = require('http').Server(app);
 app.use(bodyParser.json());
 app.use(require('./controller'));
 
-http.listen(3000, function(){
+http.listen(config.port, function(){
   console.log('listening on port 3000');
 });
 console.log('Pollng app started');
