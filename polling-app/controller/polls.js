@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+
 // require model file.
 var pollModel = require('../models/pollsDAO');
 
@@ -23,9 +24,26 @@ router.route('/')
 
   })
   .post(function(req,res) {
-    // Code to add new polls.
-    console.log("/post called")
-    res.json({"done":"yes"});
+      // Code to add new polls.
+      console.log("/post called")
+      var pollObject = new pollModel();
+      // Calling our model function.
+      // make sure to set content-type header to content-type:application/json
+      var data = {
+        question: req.body.question,
+        options: req.body.polls
+      }
+      console.log(typeof req.body.polls)
+      console.log(data) 
+      pollObject.addNewPolls(data, function (err){
+           if(err) {
+                response = {"error" : true,"message" : "Error adding poll data"};
+           } else {
+                response = {"error" : false,"message" : "Poll added"};
+           }
+           res.json(response);
+      });
+
   })
   .put(function(req,res) {
     // Code to update votes of poll.

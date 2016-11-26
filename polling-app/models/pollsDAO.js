@@ -22,6 +22,28 @@ var polls = function () {
             callback(null, response);
         });
       }
+    
+    this.addNewPolls = function (pollData,callback) {
+        var db = new mongoOp();
+        var response = {};
+
+        db.question = pollData.question
+        db.polls = pollData.options
+        console.log("-----------")
+        console.log(db)
+        db.save(function(err){
+             // save() will run insert() command of MongoDB.
+             // it will add new data in collection.
+                 if(err) {
+                     response = {"error" : true,"message" : "Error adding data"};
+                 } else {
+                     response = {"error" : false,"message" : "Data added"};
+                 }
+                callback(null, response);
+        });
+
+
+    }
 }
 
 module.exports = polls;
