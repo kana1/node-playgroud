@@ -15,4 +15,4 @@ Node js demo project: polling app
 ```
 
 Install dependencies and it will write package entries in package.json file
-`npm install --save express rethinkdb socket.io async body-parser`
+`npm install --save express mongoose socket.io async body-parser`
