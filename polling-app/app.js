@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var http = require('http').Server(app);
 var mongoose    =   require("mongoose");
 var config = require('./config/config');
 /**
@@ -17,8 +16,10 @@ mongoose.connection.on('connected', function () {
   console.log('Mongoose default connection open to ' + config.db);
 });
 
-http.listen(config.port, function(){
-  console.log('listening on port '+ config.port);
+//application listens to port mentioned in the configuration
+app.listen(config.port, function(err){
+  if(err) throw err;
+  console.log("App listening on port "+config.port);
 });
 console.log('Pollng app started');
 
