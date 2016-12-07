@@ -1,8 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var http = require('http').Server(app);
-
+var mongoose    =   require("mongoose");
+var config = require('./config/config');
 /**
   Adding the controllers.
 */
@@ -10,8 +10,16 @@ var http = require('http').Server(app);
 app.use(bodyParser.json());
 app.use(require('./controller'));
 
-http.listen(3000, function(){
-  console.log('listening on port 3000');
+mongoose.connect(config.db);
+
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose default connection open to ' + config.db);
+});
+
+//application listens to port mentioned in the configuration
+app.listen(config.port, function(err){
+  if(err) throw err;
+  console.log("App listening on port "+config.port);
 });
 console.log('Pollng app started');
 

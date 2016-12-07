@@ -22,7 +22,7 @@ describe("SAMPLE unit test",function(){
     });
 
 
-    it("should return poll page get",function(done){
+    xit("should return poll page get",function(done){
         supertest(app)
         .get('/polls')
         .expect(200)
@@ -33,7 +33,7 @@ describe("SAMPLE unit test",function(){
         });
     });
 
-    it("should return poll page post",function(done){
+    xit("should return poll page post",function(done){
         supertest(app)
         .post('/polls')
         .expect(200)
