@@ -3,12 +3,16 @@ var bodyParser = require('body-parser');
 var app = express();
 var mongoose    =   require("mongoose");
 var config = require('./config/config');
+
+var routeController = require('./controller')
 /**
   Adding the controllers.
 */
 
 app.use(bodyParser.json());
-app.use(require('./controller'));
+
+routeController(app);
+// app.use();
 
 mongoose.connect(config.db);
 

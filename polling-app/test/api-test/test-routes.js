@@ -20,31 +20,7 @@ describe("SAMPLE unit test",function(){
             done();
         });
     });
-
-
-    xit("should return poll page get",function(done){
-        supertest(app)
-        .get('/polls')
-        .expect(200)
-        .end(function(err,res){
-            // HTTP status should be 200
-            res.status.should.equal(200);               
-            done();
-        });
-    });
-
-    xit("should return poll page post",function(done){
-        supertest(app)
-        .post('/polls')
-        .expect(200)
-        .end(function(err,res){
-            // HTTP status should be 200
-            res.status.should.equal(200);               
-            done();
-        });
-    });
-
-
+    
     it("other links should return 404",function(done){
         supertest(app)
         .get("/random")

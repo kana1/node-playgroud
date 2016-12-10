@@ -1,15 +1,22 @@
 var express = require('express');
-var router = express.Router();
+// var router = express.Router();
 
 // require model file.
-var pollModel = require('../models/pollsDAO');
+var pollObject = require('../models/pollsDAO');
+// module.exports = router;
 
-router.route('/')
+module.exports = function (app) {
+ 
+  var router = express.Router();
+
+   app.use('/polls', router);
+
+   router.route('/')
   .get(function(req,res) {
       // Code to fetch the polls.
       console.log("/get called")
       // Code to fetch the polls.
-      var pollObject = new pollModel();
+      // var pollObject = new pollModel();
 
       // Calling our model function.
       pollObject.getAllPolls(function(err,pollResponse) {
@@ -26,7 +33,7 @@ router.route('/')
   .post(function(req,res) {
       // Code to add new polls.
       console.log("/post called")
-      var pollObject = new pollModel();
+      // var pollObject = new pollModel();
       // Calling our model function.
       // make sure to set content-type header to content-type:application/json
       var data = {
@@ -49,5 +56,4 @@ router.route('/')
     // Code to update votes of poll.
     res.json({"responseCode" : 2})
   });
-
-module.exports = router;
+}

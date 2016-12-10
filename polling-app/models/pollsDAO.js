@@ -30,7 +30,7 @@ var polls = function () {
         db.question = pollData.question
         db.polls = pollData.options
         console.log("-----------")
-        console.log(db)
+        // console.log(db)
         db.save(function(err){
              // save() will run insert() command of MongoDB.
              // it will add new data in collection.
@@ -42,8 +42,7 @@ var polls = function () {
                 callback(null, response);
         });
 
-
     }
 }
 
-module.exports = polls;
+module.exports = new polls();
