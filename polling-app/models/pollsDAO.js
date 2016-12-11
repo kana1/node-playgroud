@@ -35,9 +35,10 @@ var polls = function () {
              // save() will run insert() command of MongoDB.
              // it will add new data in collection.
                  if(err) {
-                     response = {"error" : true,"message" : "Error adding data"};
+                     response = {"message" : "Error adding data"};
+                     callback(err, response);
                  } else {
-                     response = {"error" : false,"message" : "Data added"};
+                     response = {"message" : "Data added"};
                  }
                 callback(null, response);
         });

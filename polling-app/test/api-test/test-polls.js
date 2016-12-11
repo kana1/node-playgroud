@@ -10,20 +10,21 @@ var proxyquire =  require('proxyquire')
 
 // UNIT test begin
 describe("polls unit test", function(){
-    var app, pollDAOstub, request, pollroute;
+    var app, pollDAOstub, request, pollroute, log;
 
     beforeEach(function() {
 
         pollDAOstub =  function (){ 
             //   return{ 
                   this.getAllPolls = function (callback) {
-                      console.log('mocked');
+                    //   console.log('mocked');
                       callback(null, {"data": "allmock"})
                   }
 
                   this.addNewPolls = function (polldata, callback) {
-                      console.log('mocked');
-                      callback(null, {"data": "addmock"})
+                    //   console.log('mocked');
+                    log = {"addNewPolls": polldata}
+                      callback(null, {"message": "addmock"})
                   }
             //   }
         };
@@ -47,6 +48,9 @@ describe("polls unit test", function(){
         .get('/random')
         .expect(404)
         .end(function(err,res){
+            if(err) {
+                 done(err);
+            }
             // HTTP status should be 404
             res.status.should.equal(404);
             done()
@@ -62,6 +66,11 @@ describe("polls unit test", function(){
         .get('/polls')
         .expect(200)
         .end(function(err,res){
+            
+            if(err) {
+                 done(err);
+            }
+            
             // HTTP status should be 200
             res.status.should.equal(200);
             res.should.be.json;
@@ -75,27 +84,37 @@ describe("polls unit test", function(){
         });
     });
 
-    xit("should return poll page post",function(done){
+    it("should return poll page post",function(done){
 
-        // var postData = {
-        //         "question": "my awesome question",
-        //         "polls" : ["freeResponse", "response"]
-        // };
+        var postData = {
+                "question": "my awesome question",
+                "polls" : ["freeResponse", "response"]
+        };
 
         supertest(app)
         .post('/polls')
-        .field('question', 'my awesome question')
-        .field('polls', '[answer1, answer2]')
+        .send(postData)
         .expect(200)
         .end(function(err,res){
+
+            if(err) {
+                 done(err);
+            }
+            
             // HTTP status should be 200
             res.status.should.equal(200);
             res.should.be.json;
             JSON.stringify(res.body).should.equal(JSON.stringify({
-                "responseCode" : 0, 
-                "responseDesc" : "Success", 
-                "data" : {"data": "addmock"}
-            }));              
+                "error" : false, 
+                "data" : {"message": "addmock"}
+            }));
+            JSON.stringify(log.addNewPolls).should.equal(JSON.stringify({
+                "question": "my awesome question",
+                "options" : ["freeResponse", "response"]
+            }));
+            // console.log(log.addNewPolls)
+            // test data is transferred correctly to the mock
+
             done();
         });
     });

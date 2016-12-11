@@ -1,5 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 var app = express();
 var mongoose    =   require("mongoose");
 var config = require('./config/config');
@@ -9,7 +9,7 @@ var routeController = require('./controller')
   Adding the controllers.
 */
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 routeController(app);
 // app.use();

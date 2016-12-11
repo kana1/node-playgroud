@@ -1,4 +1,5 @@
-var express = require('express');
+var router = require('express').Router();;
+var bodyParser = require('body-parser');
 // var router = express.Router();
 
 // require model file.
@@ -7,14 +8,16 @@ var pollObject = require('../models/pollsDAO');
 
 module.exports = function (app) {
  
-  var router = express.Router();
-
+  // var router = express.Router();
+   
+   // parse POST data to json format 
+   app.use(bodyParser.json());
    app.use('/polls', router);
 
    router.route('/')
   .get(function(req,res) {
       // Code to fetch the polls.
-      console.log("/get called")
+      // console.log("/get called")
       // Code to fetch the polls.
       // var pollObject = new pollModel();
 
@@ -32,7 +35,7 @@ module.exports = function (app) {
   })
   .post(function(req,res) {
       // Code to add new polls.
-      console.log("/post called")
+      // console.log("/post called")
       // var pollObject = new pollModel();
       // Calling our model function.
       // make sure to set content-type header to content-type:application/json
@@ -40,13 +43,15 @@ module.exports = function (app) {
         question: req.body.question,
         options: req.body.polls
       }
-      console.log(typeof req.body.polls)
-      console.log(data) 
-      pollObject.addNewPolls(data, function (err){
+      // console.log(typeof req.body.polls)
+      // console.log(data) 
+      pollObject.addNewPolls(data, function (err, response){
            if(err) {
-                response = {"error" : true,"message" : "Error adding poll data"};
+                response = {"error" : true,
+                            "message" : "Error adding poll data"};
            } else {
-                response = {"error" : false,"message" : "Poll added"};
+                response = {"error" : false,
+                            "data" : response};
            }
            res.json(response);
       });
