@@ -1,5 +1,5 @@
 {
-  "name": "polling-app",
+  "name": "pol",
   "version": "1.0.0",
   "description": "Test Node js polling app ",
   "main": "app.js",
@@ -24,6 +24,6 @@
     "supertest": "^2.0.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -u exports test/*/*"
+    "test": "mocha -u exports test/*/*"
   }
 }

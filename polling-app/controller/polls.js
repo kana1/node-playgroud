@@ -33,16 +33,31 @@ router.route('/')
         question: req.body.question,
         options: req.body.polls
       }
-      console.log(typeof req.body.polls)
-      console.log(data) 
-      pollObject.addNewPolls(data, function (err){
-           if(err) {
-                response = {"error" : true,"message" : "Error adding poll data"};
-           } else {
-                response = {"error" : false,"message" : "Poll added"};
-           }
-           res.json(response);
-      });
+      
+      
+      if(!(data.question === undefined )){
+    	  
+    	  console.log(typeof req.body.polls)
+          console.log(data)
+      }else{
+    	  
+    	  response = {"error" : true,"message" : "Invalid input data type"};
+    	  res.json(response);
+      }
+      
+      
+       pollObject.addNewPolls(data, function (err){
+               if(err) {
+                    response = {"error" : true,"message" : "Error adding poll data"};
+               } else {
+                    response = {"error" : false,"message" : "Poll added"};
+               }
+               res.json(response);
+       });
+    	  
+      
+      
+     
 
   })
   .put(function(req,res) {
