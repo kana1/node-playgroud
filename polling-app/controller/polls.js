@@ -36,7 +36,7 @@ router.route('/')
       }
       
       //validate 
-      if(data.question === undefined ) || data.options === undefined ){	  
+      if(data.question === undefined || data.options === undefined ){	  
     	  response = {"error" : true,"message" : "Invalid input data type"};
     	  res.json(response);
     	  return;
