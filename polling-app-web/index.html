@@ -33,7 +33,9 @@
           </ul>
         </nav>
     </div>-->
-    <md-toolbar layout="row" flex="1">
+
+    <!-- showed an error in console - so disabled to explore options
+      <md-toolbar layout="row" flex="1">
       <md-menu-bar>
         <md-menu>
           <md-button ng-href="#!/">Home</md-button>
@@ -45,7 +47,15 @@
           <md-button ng-href="#!/view">View Poll</md-button>
         </md-menu>
       </md-menu-bar>
-    </md-toolbar>
+    </md-toolbar>-->
+
+    <!-- seems to be a way to implement a navigation easyly -->
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-href="#!/" name="home">Home</md-nav-item>
+      <md-nav-item md-nav-href="#!/create" name="create">Create poll</md-nav-item>
+      <md-nav-item md-nav-href="#!/view" name="view">View</md-nav-item>
+    </md-nav-bar>
+
     <br/>
 
     <div flex layout="column" layout-align="left" ng-view>
