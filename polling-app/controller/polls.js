@@ -26,8 +26,7 @@ router.route('/')
   .post(function(req,res) {
       // Code to add new polls.
       console.log("/post called")
-      var pollObject = new pollModel();
-      var isvalidated = false;
+
       // Calling our model function.
       // make sure to set content-type header to content-type:application/json
       var data = {
@@ -37,17 +36,18 @@ router.route('/')
       
       //validate 
       if(!(data.question === undefined ) || !(data.options === undefined )){
-    	  isvalidated = true;
     	  console.log(typeof req.body.polls)
           console.log(data)
       }else{
-    	  isvalidated = false;
     	  console.log(data);
     	  response = {"error" : true,"message" : "Invalid input data type"};
     	  res.json(response);
+    	  return;
       }
       
-      if(isvalidated){
+
+    	  
+    	  var pollObject = new pollModel();
     	  
     	  pollObject.addNewPolls(data, function (err){
               if(err) {
@@ -56,14 +56,12 @@ router.route('/')
                    response = {"error" : false,"message" : "Poll added"};
               }
               res.json(response);
+              return;
     	  });
     	  
-      }
+      
        
-    	  
-      
-      
-     
+
 
   })
   .put(function(req,res) {
