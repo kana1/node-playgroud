@@ -38,17 +38,19 @@ router.route('/')
       //validate 
       if(data.question === undefined || data.options === undefined ){	  
     	  response = {"error" : true,"message" : "Invalid input data type"};
-    	  res.json(response);
+    	  // HTTP 400 = 400 Bad Request
+        res.status(400).json(response);
     	  return;
       }
   
-        console.log(data)
+        console.log(data);
     	  
     	  var pollObject = new pollModel();
     	  
     	  pollObject.addNewPolls(data, function (err){
               if(err) {
                    response = {"error" : true,"message" : "Error adding poll data"};
+                   res.status(500);
               } else {
                    response = {"error" : false,"message" : "Poll added"};
               }
