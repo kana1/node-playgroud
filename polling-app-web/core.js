@@ -1,4 +1,4 @@
-var app=angular.module('starterApp',['ngRoute']);
+var app=angular.module('starterApp',['ngRoute', 'ngMaterial']);
 
 // app.config(['$locationProvider', function($locationProvider) {
 //   $locationProvider.hashPrefix('');
