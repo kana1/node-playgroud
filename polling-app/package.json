@@ -24,6 +24,7 @@
     "supertest": "^2.0.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -u exports test/*/*"
+    "test": "./node_modules/.bin/mocha -u exports test/*/*",
+    "start": "node app.js"
   }
 }

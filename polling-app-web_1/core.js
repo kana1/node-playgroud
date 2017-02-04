@@ -19,11 +19,17 @@ app.config(function($routeProvider){
 });
 
 
-app.controller('pollingController',function($scope, $mdDialog){
+app.controller('pollingController',function($scope, $http, $mdDialog){
 
        
        $scope.formData = {};
        $scope.formData.options = [{}];
+
+      $scope.pollData = [];
+      $scope.hiddenrows = [];
+
+      // Load polls when app initialise.
+      getPollData();
 
       $scope.addOption = function() {
         $scope.formData.options.push({});
@@ -51,7 +57,19 @@ app.controller('pollingController',function($scope, $mdDialog){
                         .targetEvent(ev)
             );
 
-           
-
       }
+
+      function getPollData() {
+
+            $http.get("http://localhost:3000" + "/polls").then(function(response){
+                   $scope.pollData = response.data;
+                   console.log($scope.pollData);
+                   // how to cast the retuned data ?...
+            });
+      }
+
+      $scope.updateVote = function(index) {
+            console.log(index);
+      }
+
 });
