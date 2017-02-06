@@ -62,14 +62,18 @@ app.controller('pollingController',function($scope, $http, $mdDialog){
       function getPollData() {
 
             $http.get("http://localhost:3000" + "/polls").then(function(response){
-                   $scope.pollData = response.data;
-                   console.log($scope.pollData);
+                   $scope.pollData = response.data.data;
+                   console.log(JSON.stringify(response.data.data));
                    // how to cast the retuned data ?...
             });
       }
 
       $scope.updateVote = function(index) {
-            console.log(index);
+            var data = {
+                  "id": $scope.pollData[index].id,
+                  "option": $scope.pollData[index].selected
+            };
+            console.log(data);
       }
 
 });
