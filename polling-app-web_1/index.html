@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Polling app using Node and MongoDb</title>
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  
+</head>
+
+<body ng-app='starterApp'>
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-route.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- This application bootstrap  -->
+  <script type="text/javascript" src="core.js"></script>
+
+  <div ng-controller="pollingController">
+    <!--<div>
+        <nav>
+          <ul>
+            <li><a ng-href="#!/">Home</a></li>
+            <li><a ng-href="#!/create">Create</a></li>
+            <li><a ng-href="#!/view">View</a></li>
+          </ul>
+        </nav>
+    </div>-->
+
+    <!-- showed an error in console - so disabled to explore options
+      <md-toolbar layout="row" flex="1">
+      <md-menu-bar>
+        <md-menu>
+          <md-button ng-href="#!/">Home</md-button>
+        </md-menu>
+        <md-menu>
+          <md-button ng-href="#!/create">Create poll</md-button>
+        </md-menu>
+        <md-menu>
+          <md-button ng-href="#!/view">View Poll</md-button>
+        </md-menu>
+      </md-menu-bar>
+    </md-toolbar>-->
+
+    <!-- seems to be a way to implement a navigation easyly -->
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-href="#!/" name="home">Home</md-nav-item>
+      <md-nav-item md-nav-href="#!/create" name="create">Create poll</md-nav-item>
+      <md-nav-item md-nav-href="#!/view" name="view">View</md-nav-item>
+    </md-nav-bar>
+
+    <br/>
+
+    <div flex layout="column" layout-align="left" ng-view>
+      <!-- This DIV loads templates depending upon route -->
+    </div>
+
+  </div>
+
+</body>
+</html>

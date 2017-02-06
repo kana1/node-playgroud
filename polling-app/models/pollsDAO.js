@@ -17,9 +17,9 @@ var polls = function () {
              if(err) {
                  response = {"error" : true,"message" : "Error fetching data"};
              } else {
-                 response = {"error" : false,"message" : data};
+                 response = { "error": false, "message": data };
              }
-            callback(null, response);
+            callback(err, response);
         });
       }
     
@@ -32,14 +32,20 @@ var polls = function () {
         console.log("-----------")
         console.log(db)
         db.save(function(err){
+                // console.log(err)
              // save() will run insert() command of MongoDB.
              // it will add new data in collection.
-                 if(err) {
-                     response = {"error" : true,"message" : "Error adding data"};
-                 } else {
-                     response = {"error" : false,"message" : "Data added"};
-                 }
-                callback(null, response);
+            if (err) {
+                // if (err.name == 'ValidationError') {
+                //     for (field in err.errors) {
+                //         console.log(err.errors[field].message);
+                //     }
+                // }
+                response = { "error": true, "message": "Error adding data" };
+            } else {
+                response = { "error": false, "message": "Data added" };
+            }
+                callback(err, response);
         });
 
 

@@ -13,13 +13,20 @@ router.route('/')
 
       // Calling our model function.
       pollObject.getAllPolls(function(err,pollResponse) {
+        
+        // enable cors
+        // res.header('Access-Control-Allow-Origin', '*');
+        // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        // res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+        
+        
         if(err) {
           return res.json({"responseCode" : 1, 
                           "responseDesc" : pollResponse});
         }
         res.status(200).json({"responseCode" : 0, 
                               "responseDesc" : "Success", 
-                              "data" : pollResponse});
+                              "data" : pollResponse.message});
       });
 
   })
@@ -42,11 +49,11 @@ router.route('/')
         res.status(400).json(response);
     	  return;
       }
-  
+        
         console.log(data);
     	  
     	  var pollObject = new pollModel();
-    	  
+
     	  pollObject.addNewPolls(data, function (err){
               if(err) {
                    response = {"error" : true,"message" : "Error adding poll data"};
@@ -57,10 +64,6 @@ router.route('/')
               res.json(response);
               return;
     	  });
-    	  
-      
-       
-
 
   })
   .put(function(req,res) {
