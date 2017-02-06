@@ -1,0 +1,34 @@
+<md-content layout-padding>
+    <form name="projectForm">
+        <md-input-container class="md-block">
+            <label>Enter poll question</label>
+            <input md-maxlength="70" required name="question" ng-model="formData.pollQuestion">
+            <div ng-messages="projectForm.question.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="md-maxlength">The name has to be less than 70 characters long.</div>
+            </div>
+        </md-input-container>
+     
+        <div ng-repeat="opt in formData.options">
+            <!-- must use ng-form to this functionality to work properly-->
+            <ng-form name="fieldForm">
+                <md-input-container class="md-block">
+                    <label>Option  {{$index + 1}}</label>
+                    <input required name="option" ng-model="opt.option" />
+                    <div ng-messages="fieldForm.option.$error" role="alert">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+            </ng-form>
+        </div>
+
+        <!--Dynamically add remove options from gui-->
+        <md-button class="md-raised md-primary" ng-click="addOption()">Add Option</md-button>
+        <md-button class="md-raised md-primary" ng-click="removeOption()" ng-disabled="formData.options.length<=1">Remove Option</md-button>
+       
+        <md-input-container class="md-block">
+            <md-button class="md-raised md-primary" ng-disabled="projectForm.$invalid" ng-click="submitPoll($event)">Create Poll</md-button>
+        </md-input-container>
+
+    </form>
+</md-content>

@@ -8,6 +8,17 @@ var config = require('./config/config');
 */
 
 app.use(bodyParser.json());
+
+// enable cors
+// this line must come before declaring routers.
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+// add routers
 app.use(require('./controller'));
 
 mongoose.connect(config.db);

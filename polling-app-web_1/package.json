@@ -1,0 +1,16 @@
+{
+  "name": "polling_web_app",
+  "version": "1.0.0",
+  "description": "Web interface of polling app",
+  "keywords": [
+    "angulerjs"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  },
+   "scripts": {
+     "lite": "lite-server -c config/bs-config.json",
+     "dev": "lite-server"
+  }
+}
