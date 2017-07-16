@@ -1,2 +1,2 @@
-powershell.exe -Command "& {Set-ExecutionPolicy -Scope CurrentUser RemoteSigned}"
+powershell.exe -Command "& {set-executionpolicy remotesigned currentuser}"
 powershell.exe .\mongodb-mng.ps1
