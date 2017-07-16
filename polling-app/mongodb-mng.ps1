@@ -1,6 +1,6 @@
 # Set-ExecutionPolicy RemoteSigned
 
-$mongoDbPath = "D:\MongoDB" 
+$mongoDbPath = "D:\home\MongoDB" 
 $mongoDbConfigPath = "$mongoDbPath\mongod.cfg"
 $url = "http://downloads.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.4.9.zip" 
 $zipFile = "$mongoDbPath\mongo.zip" 
@@ -17,8 +17,8 @@ md "$mongoDbPath\log"
 md "$mongoDbPath\data" 
 md "$mongoDbPath\data\db"
 
-[System.IO.File]::AppendAllText("$mongoDbConfigPath", "dbpath=D:\MongoDB\data\db`r`n")
-[System.IO.File]::AppendAllText("$mongoDbConfigPath", "logpath=D:\MongoDB\log\mongo.log`r`n")
+[System.IO.File]::AppendAllText("$mongoDbConfigPath", "dbpath=D:\home\MongoDB\data\db`r`n")
+[System.IO.File]::AppendAllText("$mongoDbConfigPath", "logpath=D:\home\MongoDB\log\mongo.log`r`n")
 [System.IO.File]::AppendAllText("$mongoDbConfigPath", "smallfiles=true`r`n")
 [System.IO.File]::AppendAllText("$mongoDbConfigPath", "noprealloc=true`r`n")
 
