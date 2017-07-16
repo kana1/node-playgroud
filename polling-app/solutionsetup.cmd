@@ -1,2 +1,2 @@
-powershell.exe -Command "& {Set-ExecutionPolicy bypass}"
+powershell.exe -Command "& {Set-ExecutionPolicy -Scope CurrentUser}"
 powershell.exe .\mongodb-mng.ps1
