@@ -22,10 +22,10 @@ md "$mongoDbPath\data\db"
 [System.IO.File]::AppendAllText("$mongoDbConfigPath", "smallfiles=true`r`n")
 [System.IO.File]::AppendAllText("$mongoDbConfigPath", "noprealloc=true`r`n")
 
-# $webClient = New-Object System.Net.WebClient 
-# $webClient.DownloadFile($url,$zipFile)
+$webClient = New-Object System.Net.WebClient 
+$webClient.DownloadFile($url,$zipFile)
 
-curl -OutFile $zipFile $url
+#curl -OutFile $zipFile $url
 
 $shellApp = New-Object -com shell.application 
 $destination = $shellApp.namespace($mongoDbPath) 
@@ -34,7 +34,7 @@ $destination.Copyhere($shellApp.namespace($zipFile).items())
 Copy-Item "$unzippedFolderContent\*" $mongoDbPath -recurse
 
 Remove-Item $unzippedFolderContent -recurse -force 
-Remove-Item $zipFile -recurse -force
+# Remove-Item $zipFile -recurse -force
 
 & $mongoDBPath\bin\mongod.exe --config $mongoDbConfigPath --install
 
