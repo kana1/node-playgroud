@@ -22,8 +22,10 @@ md "$mongoDbPath\data\db"
 [System.IO.File]::AppendAllText("$mongoDbConfigPath", "smallfiles=true`r`n")
 [System.IO.File]::AppendAllText("$mongoDbConfigPath", "noprealloc=true`r`n")
 
-$webClient = New-Object System.Net.WebClient 
-$webClient.DownloadFile($url,$zipFile)
+# $webClient = New-Object System.Net.WebClient 
+# $webClient.DownloadFile($url,$zipFile)
+
+curl -o $zipFile $url
 
 $shellApp = New-Object -com shell.application 
 $destination = $shellApp.namespace($mongoDbPath) 
