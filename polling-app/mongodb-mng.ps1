@@ -25,7 +25,7 @@ md "$mongoDbPath\data\db"
 # $webClient = New-Object System.Net.WebClient 
 # $webClient.DownloadFile($url,$zipFile)
 
-curl -o $zipFile $url
+curl -OutFile $zipFile $url
 
 $shellApp = New-Object -com shell.application 
 $destination = $shellApp.namespace($mongoDbPath) 
