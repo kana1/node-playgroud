@@ -24,7 +24,6 @@
     "supertest": "^2.0.1"
   },
   "scripts": {
-    "preinstall": "powershell -F ./mongodb-mng.ps1",
     "test": "mocha -u exports test/*/*",
     "start": "node app.js"
   }
