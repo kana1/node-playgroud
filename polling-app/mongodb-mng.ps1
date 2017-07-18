@@ -6,11 +6,11 @@ $url = "http://downloads.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.4.9.z
 $zipFile = "$mongoDbPath\mongo.zip" 
 $unzippedFolderContent ="$mongoDbPath\mongodb-win32-x86_64-2008plus-2.4.9"
 
-if ((Test-Path -path $mongoDbPath) -eq $True) 
-{ 
-  write-host "Seems you already installed MongoDB"
-	exit 
-}
+# if ((Test-Path -path $mongoDbPath) -eq $True) 
+# { 
+  # write-host "Seems you already installed MongoDB"
+	# exit 
+# }
 
 md $mongoDbPath 
 md "$mongoDbPath\log" 
